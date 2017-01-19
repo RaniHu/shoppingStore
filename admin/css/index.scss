@@ -1,0 +1,204 @@
+@import "../../common/css/common_mixin";
+
+body {
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+}
+
+//变量
+$fontColor: #76919b, #576e76, #725ef1, #313e51;
+$bgColor: #f0eefc, #725fec, #f4f8f9,#27a9f7;
+$side_width: 220px;
+$sidebar_left: 54px;
+$side_title_icon_size: 32px;
+$sidelist_icon_size:23px;
+$open_icon_size:23px;
+
+//盒模型
+%border_box {
+  @include box-sizing(border-box);
+}
+
+//字体划过时样式
+%font_style {
+  a {
+    color: nth($fontColor, 1);
+    &.active, &:hover {
+      color: nth($fontColor, 2);
+    }
+  }
+}
+
+//侧边栏图标背景
+$icon_list: side_admin_icon, side_order_icon, side_product_icon, side_sort_icon, side_title_icon,
+side_user_icon;
+//循环
+@each $bg_icon in $icon_list {
+  .#{$bg_icon} {
+    background: url("../images/#{$bg_icon}.png") no-repeat 20px;
+    background-size: $sidelist_icon_size;
+  }
+}
+
+/*外层*/
+.wrapper {
+}
+
+/*侧边栏*/
+
+#sidebar {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: $side_width;
+  height: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid #e9f1f1;
+  padding: 10px 0 0 0;
+  overflow: auto;
+  @extend %border_box;
+  /*标题*/
+  h1 {
+    font-size: 20px;
+    color: nth($fontColor, 3);
+    padding-left: $sidebar_left;
+    margin: 12px 0 20px 0;
+    background: url("../images/side_title_icon.png") no-repeat 20px;
+    background-size: $side_title_icon_size;
+  }
+}
+
+/*侧边菜单*/
+#sidemenu {
+  li {
+    display: block;
+    /*菜单标题*/
+    h3 {
+      position: relative;
+      font-size: 16px;
+      color: nth($fontColor, 2);
+      padding: 8px 0 8px $sidebar_left;
+      cursor: pointer;
+      /*展开按钮*/
+      .open_icon {
+        position: absolute;
+        right: 30px;
+        top:50%;
+        margin-top: -$open_icon_size/2;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background: url("../images/open_icon.png") no-repeat;
+        background-size: $open_icon_size;
+        @include transform(rotate(90deg));
+        @include transition(0.3s);
+        &.close{
+          @include transform(rotate(0));
+        }
+      }
+    }
+    a {
+      display: block;
+      color: nth($fontColor, 1);
+      padding: 8px 0 8px 50px;
+      border-left: 4px solid #ffffff;
+      margin: 1px auto;
+      &.active, &:hover {
+        background-color: nth($bgColor, 3);
+        color: nth($fontColor, 3);
+        border-left: 4px solid nth($bgColor, 2);
+      }
+    }
+  }
+}
+
+/*右侧主要内容*/
+#main {
+  padding-left: $side_width;
+}
+
+#main_top {
+  padding-right: 60px;
+}
+
+/*顶部菜单*/
+#top_menu {
+  font-size: 0;
+  text-align: right;
+  li {
+    display: inline-block;
+    a {
+      display: block;
+      color: nth($fontColor, 2);
+      padding: 12px 8px;
+      font-size: 14px;
+      &.active, &:hover {
+        color: nth($fontColor, 3);
+      }
+    }
+  }
+}
+
+/*主要内容*/
+#main_content {
+  background-color: nth($bgColor, 3);
+  padding: 25px 50px;
+  h2 {
+    font-size: 20px;
+    color: nth($fontColor, 2);
+    margin-bottom: 30px;
+  }
+  /*按钮*/
+  .form_btn{
+    font-size: 0;
+    margin: 40px 0  0 100px;
+    input{
+      width: 90px;
+      height: 32px;
+      color: #ffffff;
+      cursor: pointer;
+      margin: 0 5px;
+      @include border-radius(5px);
+    }
+    #confirm_btn{
+      background-color: nth($bgColor,4);
+    }
+    #cancel_btn{
+      background-color: #dddddd;
+      color: #666;
+    }
+  }
+
+}
+
+/*添加管理员表单*/
+#addAdminForm ul{
+  width: auto;
+  li{
+    font-size: 0;
+    margin: 10px auto;
+    color: nth($fontColor, 2);
+    /*提示信息*/
+    @at-root
+    #prompt_mes{
+      font-size: 14px;
+      color: #fa3338;
+    }
+    label{
+      display: inline-block;
+      width: 120px;
+      font-size: 14px;
+      vertical-align: middle;
+
+    }
+    input{
+      display: inline-block;
+      width: 260px;
+      height: 25px;
+      padding: 2px 5px;
+      border: 1px solid #dddddd;
+      font-size: 14px;
+      vertical-align: middle;
+
+    }
+  }
+}

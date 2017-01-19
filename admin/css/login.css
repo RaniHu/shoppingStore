@@ -1,0 +1,101 @@
+@charset "UTF-8";
+/*圆圈头像*/
+body {
+  background-color: #f2f2f2; }
+
+/*登陆盒子*/
+#login_box {
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  padding: 20px 20px 40px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  -moz-border-radius: 5px;
+  /* Firefox */
+  -webkit-border-radius: 5px;
+  /* Safari 和 Chrome */
+  border-radius: 5px;
+  /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/*登陆表单*/
+#login_form {
+  /*登陆按钮*/ }
+  #login_form .form_title {
+    color: #333333;
+    font-size: 24px;
+    text-align: center;
+    margin: 5px 0 20px 0; }
+  #login_form .form_input li {
+    margin-top: 10px;
+    /*验证码输入框*/
+    /*验证码图片*/
+    /*提示信息*/ }
+    #login_form .form_input li.autoLogin label {
+      display: inline-block;
+      font-size: 12px;
+      padding: 0; }
+    #login_form .form_input li label {
+      display: block;
+      font-size: 14px;
+      color: #555555;
+      padding: 6px 0 5px 2px; }
+    #login_form .form_input li .input_text {
+      width: 100%;
+      border: 1px solid #dddddd;
+      padding: 7px 6px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box;
+      -moz-border-radius: 5px;
+      /* Firefox */
+      -webkit-border-radius: 5px;
+      /* Safari 和 Chrome */
+      border-radius: 5px;
+      /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */ }
+    #login_form .form_input li .validate_input {
+      display: block; }
+      #login_form .form_input li .validate_input .input_text {
+        width: 65%;
+        display: inline-block; }
+    #validate_img {
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer; }
+    #prompt_mes {
+      text-align: right;
+      font-size: 12px;
+      color: #fa3338; }
+    #autoLogin {
+      font-size: 14px; }
+  #login_btn {
+    width: 100%;
+    height: 35px;
+    color: #ffffff;
+    border: 1px solid #1679ce;
+    background-color: #1679ce;
+    margin-top: 10px;
+    cursor: pointer;
+    -moz-border-radius: 5px;
+    /* Firefox */
+    -webkit-border-radius: 5px;
+    /* Safari 和 Chrome */
+    border-radius: 5px;
+    /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -ms-transiton: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s; }
+    #login_btn:hover {
+      background-color: #1571c0; }
+
+/*# sourceMappingURL=login.css.map */

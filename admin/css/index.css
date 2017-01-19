@@ -1,0 +1,182 @@
+@charset "UTF-8";
+/*圆圈头像*/
+body {
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei"; }
+
+#sidebar {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.side_admin_icon {
+  background: url("../images/side_admin_icon.png") no-repeat 20px;
+  background-size: 23px; }
+
+.side_order_icon {
+  background: url("../images/side_order_icon.png") no-repeat 20px;
+  background-size: 23px; }
+
+.side_product_icon {
+  background: url("../images/side_product_icon.png") no-repeat 20px;
+  background-size: 23px; }
+
+.side_sort_icon {
+  background: url("../images/side_sort_icon.png") no-repeat 20px;
+  background-size: 23px; }
+
+.side_title_icon {
+  background: url("../images/side_title_icon.png") no-repeat 20px;
+  background-size: 23px; }
+
+.side_user_icon {
+  background: url("../images/side_user_icon.png") no-repeat 20px;
+  background-size: 23px; }
+
+/*外层*/
+/*侧边栏*/
+#sidebar {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid #e9f1f1;
+  padding: 10px 0 0 0;
+  overflow: auto;
+  /*标题*/ }
+  #sidebar h1 {
+    font-size: 20px;
+    color: #725ef1;
+    padding-left: 54px;
+    margin: 12px 0 20px 0;
+    background: url("../images/side_title_icon.png") no-repeat 20px;
+    background-size: 32px; }
+
+/*侧边菜单*/
+#sidemenu li {
+  display: block;
+  /*菜单标题*/ }
+  #sidemenu li h3 {
+    position: relative;
+    font-size: 16px;
+    color: #576e76;
+    padding: 8px 0 8px 54px;
+    cursor: pointer;
+    /*展开按钮*/ }
+    #sidemenu li h3 .open_icon {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      margin-top: -11.5px;
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background: url("../images/open_icon.png") no-repeat;
+      background-size: 23px;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg);
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -ms-transiton: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s; }
+      #sidemenu li h3 .open_icon.close {
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0); }
+  #sidemenu li a {
+    display: block;
+    color: #76919b;
+    padding: 8px 0 8px 50px;
+    border-left: 4px solid #ffffff;
+    margin: 1px auto; }
+    #sidemenu li a.active, #sidemenu li a:hover {
+      background-color: #f4f8f9;
+      color: #725ef1;
+      border-left: 4px solid #725fec; }
+
+/*右侧主要内容*/
+#main {
+  padding-left: 220px; }
+
+#main_top {
+  padding-right: 60px; }
+
+/*顶部菜单*/
+#top_menu {
+  font-size: 0;
+  text-align: right; }
+  #top_menu li {
+    display: inline-block; }
+    #top_menu li a {
+      display: block;
+      color: #576e76;
+      padding: 12px 8px;
+      font-size: 14px; }
+      #top_menu li a.active, #top_menu li a:hover {
+        color: #725ef1; }
+
+/*主要内容*/
+#main_content {
+  background-color: #f4f8f9;
+  padding: 25px 50px;
+  /*按钮*/ }
+  #main_content h2 {
+    font-size: 20px;
+    color: #576e76;
+    margin-bottom: 30px; }
+  #main_content .form_btn {
+    font-size: 0;
+    margin: 40px 0  0 100px; }
+    #main_content .form_btn input {
+      width: 90px;
+      height: 32px;
+      color: #ffffff;
+      cursor: pointer;
+      margin: 0 5px;
+      -moz-border-radius: 5px;
+      /* Firefox */
+      -webkit-border-radius: 5px;
+      /* Safari 和 Chrome */
+      border-radius: 5px;
+      /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */ }
+    #main_content .form_btn #confirm_btn {
+      background-color: #27a9f7; }
+    #main_content .form_btn #cancel_btn {
+      background-color: #dddddd;
+      color: #666; }
+
+/*添加管理员表单*/
+#addAdminForm ul {
+  width: auto; }
+  #addAdminForm ul li {
+    font-size: 0;
+    margin: 10px auto;
+    color: #576e76;
+    /*提示信息*/ }
+    #prompt_mes {
+      font-size: 14px;
+      color: #fa3338; }
+    #addAdminForm ul li label {
+      display: inline-block;
+      width: 120px;
+      font-size: 14px;
+      vertical-align: middle; }
+    #addAdminForm ul li input {
+      display: inline-block;
+      width: 260px;
+      height: 25px;
+      padding: 2px 5px;
+      border: 1px solid #dddddd;
+      font-size: 14px;
+      vertical-align: middle; }
+
+/*# sourceMappingURL=index.css.map */
