@@ -34,8 +34,13 @@ function checkForm() {
     if($("#username").val()==""||$("#pwd").val()==""||$("#validate_code").val()==""){
         $("#prompt_mes").text("信息未填写完整!");
         return false;
+    }
+    else if($(".required").val()==""||null){
+        $("#prompt_mes").text("信息未填写完整");
+        return false;
     }else {
         $("#prompt_mes").text("");
         return true;
     }
+
 }

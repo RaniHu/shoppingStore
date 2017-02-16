@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAgGA,QAAQ;AC7FR,QAAQ;AACN,EAAE;EACA,SAAS,EAAE,IAAI;EACf,aAAa,EAAE,IAAI",
-"sources": ["../../common/css/common_mixin.scss","addAdmin.scss"],
-"names": [],
-"file": "addAdmin.css"
-}

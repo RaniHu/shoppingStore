@@ -8,22 +8,32 @@ if ($act == "logout") {
     logout();
 } /*添加管理员*/
 else if ($act == "addAdmin") {
-    //传递过来的表单数据数组
-    $username = $_POST['username'];
-    $pwd = $_POST['pwd'];
-    $querySql = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username'");
-
-    //检验用户名是否存在
-    if (!empty($querySql)){
-        echo "<script>alert('用户名已存在!');</script>";
-        echo "<script>window.history.back();</script>";
-    } else {
-        //插入数据
-        $insertSql = "INSERT INTO admin(username,pwd)VALUES ('$username','$pwd')";
-        $result = mysqli_query($conn, $insertSql);
-        if ($result) {
-            echo "<script>alert('添加成功!');</script>";
-            echo "<script>window.history.back();</script>";
-        }
-    }
+    addAdmin();
+} /*修改管理员*/
+else if ($act == "updateAdmin") {
+    updateAdmin();
+} else if ($act == "delAdmin") {
+    delAdmin();
+}else if ($act == "addSort") {
+    addSort();
+}else if ($act == "updateSorts") {
+    updateSorts();
+}else if ($act == "delSorts") {
+    delSorts();
+}else if ($act == "addProduct") {
+    addProduct();
+}else if ($act == "updateProduct") {
+    updateProduct();
+}else if ($act == "delProduct") {
+    delProduct();
+}else if ($act == "addUser") {
+    addUser();
+}else if ($act == "delUser") {
+    delUser();
+}else if ($act == "updateUser") {
+    updateUser();
+}else if ($act == "updateImg") {
+    updateImg();
+}else if ($act == "delImg") {
+    delImg();
 }

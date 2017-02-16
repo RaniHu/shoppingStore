@@ -15,14 +15,24 @@ function connect(){
 }
 
 
-
 //插入操作
 function insert($table,$array){
-    $keys=join("",array_keys($array));
-    $vals=join("",array_values($array));
-    $sql= "insert {$table}($keys) values ({$vals})";
+    $keys = join(",",array_keys($array));
+    $vals = "'".join("','",array_values($array))."'";
+    $sql = "insert {$table} ($keys) values ({$vals})";
+    /*这里不能用connect()是因为使用connect()时又执行了一次数据库连接，
+    就拿不到mysqli_insert_id的最新一次id,获取到的永远都是0;*/
+    $link = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE) or die("数据库连接失败");
+    //不能用mysqli_query(connect(), $sql);
+    mysqli_query($link, $sql);
+    //不能用mysqli_insert_id(connect());
+    return mysqli_insert_id($link);
+
+   /* $keys=join(",",array_keys($array));
+    $vals="'".join("','",array_values($array))."'";
+    $sql="insert {$table}($keys) values({$vals})";
     mysqli_query(connect(),$sql);
-    return mysqli_insert_id(connect());                         //返回最后一个查询中自动生成的 ID
+    return mysqli_insert_id(connect());                         //返回最后一个查询中自动生成的 ID*/
 
 }
 
@@ -47,7 +57,7 @@ function update($table,$array,$where=null){
 //删除操作
 function delete($table,$where=null){
     $where=$where==null?null:"where".$where;
-    $sql="delete from {$table}{$where}";
+    $sql="delete from {$table} {$where}";
     mysqli_query(connect(),$sql);
     return mysqli_affected_rows(connect());
 }
@@ -68,7 +78,7 @@ function fetchAll($sql){
     while ($row=mysqli_fetch_assoc($result)){
         $data[]=$row;
     }
-    return $row;
+    return $data;
 }
 
 
@@ -77,4 +87,18 @@ function getResultNum($sql){
     $result=mysqli_query(connect(),$sql);
     return mysqli_num_rows($result);
 
+}
+
+function get_insert_id($sql){
+
+    //重新连接数据库
+    $link = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE) or die("数据库连接失败");
+
+    //定义字符集
+    mysqli_query( $link,'set names utf8' );
+
+    $res=mysqli_query($link, $sql);
+
+    //返回最后一个查询中自动生成的 ID
+    return mysqli_insert_id($link);
 }

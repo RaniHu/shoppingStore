@@ -1,5 +1,5 @@
 <?php
-require_once 'randomStr.php';
+require_once 'string.php';
 session_start();
 /*
 //通过gd库创建验证码

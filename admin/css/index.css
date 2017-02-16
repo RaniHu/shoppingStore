@@ -1,14 +1,41 @@
 @charset "UTF-8";
+#adminListTb.productListTb td.overflow_ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
 /*圆圈头像*/
 body {
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei"; }
 
-#sidebar {
+#sidebar, #main_content {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box; }
+
+#main_content .main_title .right .addAction, #main_content .main_title .right .selectAll, #main_content .form_btn #confirm_btn {
+  background-color: #27a9f6;
+  color: #ffffff;
+  -moz-border-radius: 5px;
+  /* Firefox */
+  -webkit-border-radius: 5px;
+  /* Safari 和 Chrome */
+  border-radius: 5px;
+  /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transiton: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; }
+  #main_content .main_title .right .addAction:hover, #main_content .main_title .right .selectAll:hover, #main_content .form_btn #confirm_btn:hover {
+    background-color: #0f9ff5; }
+
+#adminListTb td a {
+  color: #76919b; }
+  #adminListTb td a.active, #adminListTb td a:hover {
+    color: #725ef1; }
 
 .side_admin_icon {
   background: url("../images/side_admin_icon.png") no-repeat 20px;
@@ -105,7 +132,13 @@ body {
 
 /*右侧主要内容*/
 #main {
-  padding-left: 220px; }
+  padding-left: 220px;
+  min-width: 1200px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
 
 #main_top {
   padding-right: 60px; }
@@ -128,14 +161,65 @@ body {
 #main_content {
   background-color: #f4f8f9;
   padding: 25px 50px;
+  overflow: auto;
+  /*头部*/
   /*按钮*/ }
+  #main_content .main_box {
+    width: 70%;
+    /*商品列表盒子*/ }
+    #main_content .main_box.productListBox {
+      width: 100%; }
+    #main_content .main_box.imgListBox {
+      width: 80%; }
+  #main_content .main_title {
+    margin: 10px 0 20px 0; }
+    #main_content .main_title .right {
+      font-size: 0;
+      float: right;
+      /*添加按钮*/
+      /*搜索*/ }
+      #main_content .main_title .right .addAction, #main_content .main_title .right .selectAll {
+        display: inline-block;
+        padding: 7px 28px;
+        margin: 0 3px; }
+      #main_content .main_title .right .search_box {
+        height: 35px;
+        position: relative;
+        /*搜索框*/
+        /*搜索按钮*/ }
+        #main_content .main_title .right .search_box .search_input {
+          width: 270px;
+          height: 35px;
+          padding: 5px 12px;
+          margin-right: 10px;
+          color: #999999;
+          background-color: #ffffff;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -ms-box-sizing: border-box;
+          -o-box-sizing: border-box;
+          box-sizing: border-box;
+          -moz-border-radius: 15px;
+          /* Firefox */
+          -webkit-border-radius: 15px;
+          /* Safari 和 Chrome */
+          border-radius: 15px;
+          /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */ }
+        #main_content .main_title .right .search_box .search_btn {
+          position: absolute;
+          left: 235px;
+          width: 30px;
+          height: 35px;
+          background: url("../images/search_icon.png") no-repeat left center;
+          background-size: 20px;
+          cursor: pointer; }
   #main_content h2 {
+    display: inline-block;
     font-size: 20px;
-    color: #576e76;
-    margin-bottom: 30px; }
+    color: #725ef1; }
   #main_content .form_btn {
     font-size: 0;
-    margin: 40px 0  0 100px; }
+    margin: 30px 0 0 100px; }
     #main_content .form_btn input {
       width: 90px;
       height: 32px;
@@ -148,8 +232,6 @@ body {
       /* Safari 和 Chrome */
       border-radius: 5px;
       /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */ }
-    #main_content .form_btn #confirm_btn {
-      background-color: #27a9f7; }
     #main_content .form_btn #cancel_btn {
       background-color: #dddddd;
       color: #666; }
@@ -170,13 +252,132 @@ body {
       width: 120px;
       font-size: 14px;
       vertical-align: middle; }
-    #addAdminForm ul li input {
+    #addAdminForm ul li input, #addAdminForm ul li select {
       display: inline-block;
       width: 260px;
-      height: 25px;
+      height: 30px;
       padding: 2px 5px;
       border: 1px solid #dddddd;
       font-size: 14px;
-      vertical-align: middle; }
+      vertical-align: middle;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box; }
+    #addAdminForm ul li input[type="file"] {
+      border: none; }
+
+/*添加商品列表*/
+#addAdminForm ul.addProduct, #addAdminForm ul.addUser li {
+  /*添加附件按钮*/
+  /*附加文件*/ }
+  #addAdminForm ul.addProduct input[type="radio"], #addAdminForm ul.addUser li input[type="radio"] {
+    width: auto;
+    height: 15px; }
+  #addAdminForm ul.addProduct label.selectTitle, #addAdminForm ul.addUser li label.selectTitle {
+    width: auto;
+    margin-right: 100px; }
+  #addAdminForm ul.addProduct textarea, #addAdminForm ul.addUser li textarea {
+    width: 520px;
+    height: 120px;
+    border: 1px solid #dddddd;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box; }
+  #addAdminForm ul.addProduct #attachFileBtn, #addAdminForm ul.addUser li #attachFileBtn {
+    background-color: #dddddd;
+    color: #666;
+    padding: 5px 8px;
+    font-size: 13px;
+    -moz-border-radius: 3px;
+    /* Firefox */
+    -webkit-border-radius: 3px;
+    /* Safari 和 Chrome */
+    border-radius: 3px;
+    /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */ }
+  #addAdminForm ul.addProduct #attachList, #addAdminForm ul.addUser li #attachList {
+    margin-left: 120px;
+    margin-top: 10px; }
+  #addAdminForm ul.addProduct .attachItem, #addAdminForm ul.addUser li .attachItem {
+    display: inline-block;
+    height: 20px;
+    font-size: 13px;
+    padding: 2px 4px;
+    margin-right: 12px;
+    margin-bottom: 5px;
+    background-color: #dddddd; }
+
+/*管理员列表表格*/
+#adminListTb {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  /*表头*/ }
+  #adminListTb th {
+    color: #76919b;
+    padding: 12px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #f2f2f2; }
+  #adminListTb td {
+    color: #576e76;
+    border: none;
+    padding: 10px 50px;
+    border-bottom: 1px solid #f2f2f2; }
+    #adminListTb td.edit a {
+      margin: 0 5px; }
+    #adminListTb td.userFace img {
+      height: 50px; }
+
+/*商品列表*/
+#adminListTb.productListTb th {
+  width: auto;
+  font-size: 16px;
+  padding: 20px 6px; }
+#adminListTb.productListTb td {
+  padding: 10px 5px;
+  font-size: 14px; }
+  #adminListTb.productListTb td.overflow_ellipsis {
+    max-width: 150px; }
+
+/*分页*/
+#page_box {
+  text-align: center;
+  margin: 20px auto;
+  /*数字页码*/
+  /*当前页*/
+  /*非当前页*/
+  /*无法点击页*/ }
+  #page_box a, #page_box span {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #4d555d;
+    padding: 0 5px; }
+  #page_box .page_num {
+    margin: 0 8px;
+    padding: 5px 10px; }
+  #page_box .cur_page {
+    color: #ffffff;
+    background-color: #2082e5;
+    -moz-border-radius: 50%;
+    /* Firefox */
+    -webkit-border-radius: 50%;
+    /* Safari 和 Chrome */
+    border-radius: 50%;
+    /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */ }
+  #page_box .other_page:hover {
+    background-color: #dddddd;
+    -moz-border-radius: 50%;
+    /* Firefox */
+    -webkit-border-radius: 50%;
+    /* Safari 和 Chrome */
+    border-radius: 50%;
+    /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */ }
+  #page_box .disabled_page {
+    color: #999999; }
 
 /*# sourceMappingURL=index.css.map */

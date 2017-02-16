@@ -28,3 +28,17 @@ function ranStr($type=1,$length=4){
     return substr($code,0,$length);
 
 }
+
+
+/*生成唯一字符串*/
+function getUniName(){
+    //microtime返回当前时间戳的微秒数，true表示返回一个浮点数,false表示返回一个字符串
+    //uniqid() 函数基于以微秒计的当前时间，生成一个唯一的 ID
+    return md5(uniqid(microtime(true),true));
+}
+
+
+/*得到文件扩展名*/
+function getExtName($filename){
+    return strtolower(end(explode('.',$filename)));
+}

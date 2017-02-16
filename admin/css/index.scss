@@ -6,16 +6,27 @@ body {
 
 //变量
 $fontColor: #76919b, #576e76, #725ef1, #313e51;
-$bgColor: #f0eefc, #725fec, #f4f8f9,#27a9f7;
+$bgColor: #f0eefc, #725fec, #f4f8f9, #27a9f7, #2082e5, #27a9f6, #dddddd;
 $side_width: 220px;
 $sidebar_left: 54px;
 $side_title_icon_size: 32px;
-$sidelist_icon_size:23px;
-$open_icon_size:23px;
+$sidelist_icon_size: 23px;
+$open_icon_size: 23px;
 
 //盒模型
 %border_box {
   @include box-sizing(border-box);
+}
+
+//默认按钮样式
+%btn_default_style {
+  background-color: nth($bgColor, 6);
+  color: #ffffff;
+  @include border-radius(5px);
+  @include transition(0.3s);
+  &:hover {
+    background-color: darken(nth($bgColor, 6), 5%);
+  }
 }
 
 //字体划过时样式
@@ -23,7 +34,7 @@ $open_icon_size:23px;
   a {
     color: nth($fontColor, 1);
     &.active, &:hover {
-      color: nth($fontColor, 2);
+      color: nth($fontColor, 3);
     }
   }
 }
@@ -44,7 +55,6 @@ side_user_icon;
 }
 
 /*侧边栏*/
-
 #sidebar {
   position: absolute;
   left: 1px;
@@ -82,7 +92,7 @@ side_user_icon;
       .open_icon {
         position: absolute;
         right: 30px;
-        top:50%;
+        top: 50%;
         margin-top: -$open_icon_size/2;
         display: inline-block;
         width: 25px;
@@ -91,7 +101,7 @@ side_user_icon;
         background-size: $open_icon_size;
         @include transform(rotate(90deg));
         @include transition(0.3s);
-        &.close{
+        &.close {
           @include transform(rotate(0));
         }
       }
@@ -114,6 +124,8 @@ side_user_icon;
 /*右侧主要内容*/
 #main {
   padding-left: $side_width;
+  min-width: 1200px;
+  @include box-sizing(border-box);
 }
 
 #main_top {
@@ -139,19 +151,77 @@ side_user_icon;
 }
 
 /*主要内容*/
+$search_input_width:270px;
+$search_height:35px;
 #main_content {
   background-color: nth($bgColor, 3);
   padding: 25px 50px;
-  h2 {
-    font-size: 20px;
-    color: nth($fontColor, 2);
-    margin-bottom: 30px;
+  overflow: auto;
+  @extend %border_box;
+  .main_box {
+    width: 70%;
+    /*商品列表盒子*/
+    &.productListBox {
+      width: 100%;
+    }
+    &.imgListBox{
+      width: 80%;
+    }
   }
+  /*头部*/
+  .main_title {
+    margin: 10px 0 20px 0;
+    .right {
+      font-size: 0;
+      float: right;
+      /*添加按钮*/
+      .addAction, .selectAll {
+        display: inline-block;
+        padding: 7px 28px;
+        margin: 0 3px;
+        @extend %btn_default_style;
+      }
+      /*搜索*/
+      .search_box {
+        height: $search_height;
+        position: relative;
+        /*搜索框*/
+        .search_input {
+          width: $search_input_width;
+          height: $search_height;
+          padding: 5px 12px ;
+          margin-right: 10px;
+          color: #999999;
+          background-color: #ffffff;
+          @include box-sizing(border-box);
+          @include border-radius(15px);
+        }
+        /*搜索按钮*/
+        .search_btn {
+          position: absolute;
+          left:$search_input_width - $search_height;
+          width: 30px;
+          height: $search_height;
+          background: url("../images/search_icon.png") no-repeat left center;
+          background-size: 20px;
+          cursor: pointer;
+
+        }
+      }
+
+    }
+  }
+  h2 {
+    display: inline-block;
+    font-size: 20px;
+    color: nth($fontColor, 3);
+  }
+
   /*按钮*/
-  .form_btn{
+  .form_btn {
     font-size: 0;
-    margin: 40px 0  0 100px;
-    input{
+    margin: 30px 0 0 100px;
+    input {
       width: 90px;
       height: 32px;
       color: #ffffff;
@@ -159,10 +229,10 @@ side_user_icon;
       margin: 0 5px;
       @include border-radius(5px);
     }
-    #confirm_btn{
-      background-color: nth($bgColor,4);
+    #confirm_btn {
+      @extend %btn_default_style;
     }
-    #cancel_btn{
+    #cancel_btn {
       background-color: #dddddd;
       color: #666;
     }
@@ -171,34 +241,168 @@ side_user_icon;
 }
 
 /*添加管理员表单*/
-#addAdminForm ul{
+$input_width: 260px;
+$label_width: 120px;
+#addAdminForm ul {
   width: auto;
-  li{
+  li {
     font-size: 0;
     margin: 10px auto;
     color: nth($fontColor, 2);
     /*提示信息*/
     @at-root
-    #prompt_mes{
+    #prompt_mes {
       font-size: 14px;
       color: #fa3338;
     }
-    label{
+    label {
       display: inline-block;
-      width: 120px;
+      width: $label_width;
       font-size: 14px;
       vertical-align: middle;
 
     }
-    input{
+    input, select {
       display: inline-block;
-      width: 260px;
-      height: 25px;
+      width: $input_width;
+      height: 30px;
       padding: 2px 5px;
       border: 1px solid #dddddd;
       font-size: 14px;
       vertical-align: middle;
+      @include box-sizing(border-box);
+    }
+    input[type="file"] {
+      border: none;
+    }
+  }
+}
+
+/*添加商品列表*/
+#addAdminForm ul.addProduct, #addAdminForm ul.addUser li {
+  input[type="radio"] {
+    width: auto;
+    height: 15px;
+  }
+  label.selectTitle {
+    width: auto;
+    margin-right: 100px;
+  }
+  textarea {
+    width: $input_width*2;
+    height: 120px;
+    border: 1px solid #dddddd;
+    @include box-sizing(border-box);
+  }
+  /*添加附件按钮*/
+  #attachFileBtn {
+    background-color: #dddddd;
+    color: #666;
+    padding: 5px 8px;
+    font-size: 13px;
+    @include border-radius(3px);
+  }
+  /*附加文件*/
+  #attachList {
+    margin-left: $label_width;
+    margin-top: 10px;
+  }
+  .attachItem {
+    display: inline-block;
+    height: 20px;
+    font-size: 13px;
+    padding: 2px 4px;
+    margin-right: 12px;
+    margin-bottom: 5px;
+    background-color: #dddddd;
+  }
+}
+
+/*管理员列表表格*/
+#adminListTb {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  /*表头*/
+  th {
+    color: nth($fontColor, 1);
+    padding: 12px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #f2f2f2;
+
+
+  }
+  td {
+    color: nth($fontColor, 2);
+    border: none;
+    padding: 10px 50px;
+    border-bottom: 1px solid #f2f2f2;
+    @extend %font_style;
+    //编辑操作
+    &.edit a {
+      margin: 0 5px;
+    }
+    //用户头像
+    &.userFace img {
+      height: 50px;
+    }
+  }
+}
+
+/*商品列表*/
+#adminListTb.productListTb {
+  th {
+    width: auto;
+    font-size: 16px;
+    padding: 20px 6px;
+  }
+  td {
+    padding: 10px 5px;
+    font-size: 14px;
+    &.overflow_ellipsis {
+      max-width: 150px;
+      @extend %overflow-ellipsis-oneline;
 
     }
+  }
+
+}
+
+/*分页*/
+#page_box {
+  text-align: center;
+  margin: 20px auto;
+  a, span {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #4d555d;
+    padding: 0 5px;
+
+  }
+  /*数字页码*/
+  .page_num {
+    margin: 0 8px;
+    padding: 5px 10px;
+
+  }
+  /*当前页*/
+  .cur_page {
+    color: #ffffff;
+    background-color: nth($bgColor, 5);
+    @include border-radius(50%);
+  }
+  /*非当前页*/
+  .other_page {
+    &:hover {
+      background-color: nth($bgColor, 7);
+      @include border-radius(50%);
+
+    }
+  }
+  /*无法点击页*/
+  .disabled_page {
+    color: #999999;
   }
 }

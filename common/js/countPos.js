@@ -7,12 +7,7 @@ $(function(){
     var loginH=loginForm.outerHeight();
     loginForm.css('margin-top', -loginH / 2 - 20);
 
-
+    var clientH = $(window).height();
+    var topMenu = $("#top_menu").outerHeight();
+    $("#main_content").outerHeight(clientH - topMenu);
 });
-
-//将窗口可视高度赋值给某个元素
-function countHeight($targetH,$existH) {
-    var clientH=$(window).height();
-    var existH=$existH.outerHeight();
-    $targetH.outerHeight(clientH-existH);
-}
